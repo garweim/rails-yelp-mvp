@@ -6,4 +6,12 @@
 <br>
 <%= @restaurant.category %>
 <br>
-<%= link_to "add review", new_restaurant_review_path(@restaurant) class="btn btn-primary" %>
+<ul>
+  <% @restaurant.reviews.each do |review| %>
+    <li><%= review.content %></li>
+  <% end %>
+</ul>
+<%= link_to "add review", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %>
+<br>
+<%= link_to 'Go Back', restaurants_path(@restaurant), class: "btn btn-primary" %>
+
