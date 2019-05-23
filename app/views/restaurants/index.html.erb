@@ -1,0 +1,13 @@
+<h1>Give me all the fucking restaurants!!!</h1>
+<% @restaurants.each do |restaurant|%>
+  <ul class="list-group">
+    <li class="list-group-item"><h2><%= restaurant.name %></h2></li>
+  </ul>
+  <%= link_to "more", restaurant_path(restaurant) %>
+  <%= link_to "add review", new_restaurant_review_path(restaurant) %>
+  <% end %>
+  <br>
+  <br>
+<div class="btn btn-info">
+  <%= link_to "add restaurant", new_restaurant_path %>
+</div>

@@ -1,0 +1,27 @@
+class ReviewsController < ApplicationController
+  def index         # GET /restaurants
+    @reviews = Review.all
+  end
+
+  def new           # GET /restaurants/new
+    @review = Review.new
+  end
+
+  def create        # POST /restaurants
+     @restaurant = Restaurant.find(params[:id])
+     @review = Review.new(review_params)
+     @review.restaurant = @restaurant
+    if @review.save
+      redirect_to restaurant_path(@restaurant)
+    else
+      render "restaurants/show"
+    end
+  end
+
+  def destroy       # DELETE /restaurants/:id
+  end
+
+  def review_params
+    params.require(:review).permit(:content, :rating)
+  end
+end
